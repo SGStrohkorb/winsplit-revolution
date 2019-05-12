@@ -1,9 +1,10 @@
 #ifndef __VIRUTAL_KEY_MENAGER_H__
 #define __VIRUTAL_KEY_MENAGER_H__
 
+#include <wx/string.h>
+
 #include <vector>
 #include <utility>
-
 
 class VirtualMaster
 {

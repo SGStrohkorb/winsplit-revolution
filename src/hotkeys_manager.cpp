@@ -1,5 +1,3 @@
-#include <wx/xml/xml.h>
-
 #include "hotkeys_manager.h"
 #include "fonctions_resize.h"
 #include "fonctions_speciales.h"
@@ -7,6 +5,8 @@
 #include "multimonitor_move.h"
 #include "dialog_activewndtools.h"
 #include "tray_icon.h"
+
+#include <wx/xml/xml.h>
 
 const wxString xml_str[] =
 {
@@ -46,7 +46,7 @@ HotkeysManager::HotkeysManager (TrayIcon *tray)
 wxString HotkeysManager::Start()
 {
 	wxString str_out;
-	wxString str_in[vec_hotkey.size()];
+	std::vector<wxString> str_in(vec_hotkey.size());
 
 	LoadData();
 

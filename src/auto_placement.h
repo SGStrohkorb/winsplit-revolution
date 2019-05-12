@@ -2,9 +2,13 @@
 #ifndef __AUTOAPP_H__
 #define __AUTOAPP_H__
 
-#include <vector>
-#include <wx/arrstr.h>
+#include <windows.h>
 
+#include <wx/arrstr.h>
+#include <wx/gdicmn.h>
+#include <wx/string.h>
+
+#include <vector>
 
 struct WindowInfos
 {

@@ -1,10 +1,13 @@
 #ifndef __HK_WINSPLIT_H__
 #define __HK_WINSPLIT_H__
 
-#include <vector>
-#include <windows.h>
 #include "minimize_restore.h"
 #include "settingsmanager.h"
+
+#include <wx/frame.h>
+
+#include <vector>
+#include <windows.h>
 
 class TrayIcon;
 

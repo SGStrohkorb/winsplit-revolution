@@ -1,11 +1,9 @@
-#include <algorithm>
-#include <psapi.h>
-#include <windows.h>
+#include "auto_placement.h"
+
+#include "settingsmanager.h"
 
 #include <wx/xml/xml.h>
-
-#include "auto_placement.h"
-#include "settingsmanager.h"
+#include <wx/file.h>
 
 using namespace std;
 

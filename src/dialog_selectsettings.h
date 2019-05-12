@@ -3,6 +3,10 @@
 
 #include "settingsmanager.h"
 
+#include <wx/dialog.h>
+#include <wx/checklst.h>
+#include <wx/button.h>
+
 // Flags pour les valeurs selectionnees
 #define SST_NONE	0
 #define SST_GENERAL	1

@@ -14,6 +14,8 @@
 #include "../images/a8.xpm"
 #include "../images/a9.xpm"
 
+#include <wx/bmpbuttn.h>
+
 VirtualNumpad::VirtualNumpad (wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style)
 	: wxFrame (parent, id, title, pos, size, style),
 	  p_checkStay (NULL),

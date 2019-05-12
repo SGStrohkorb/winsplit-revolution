@@ -18,27 +18,27 @@ probably been lost, and they would have to be redone.
 
 The Winsplit Reloaded project intends to make the software work for
 Windows 10's theme, and eventually remove many of its usability
-idiosincracies.
+idiosyncrasies.
 
 Please read the LICENSE file for the legal terms under which this
 software is delivered to you.
 
-Original Changelog: https://pupitetris.github.io/winsplit-reloaded/Revolution/Changelog.html
+Original Changelog: https://dozius.github.io/winsplit-reloaded/Revolution/Changelog.html
 
-User Manual: https://pupitetris.github.io/winsplit-reloaded/Revolution/help.html
+User Manual: https://dozius.github.io/winsplit-reloaded/Revolution/help.html
 
 From the original WinSplit Revolution README:
-https://pupitetris.github.io/winsplit-reloaded/Revolution/README.txt
+https://dozius.github.io/winsplit-reloaded/Revolution/README.txt
 
 Overview
 --------
 
-What is it for? WinSplit Revolution is a small utility which allows you to easily 
-organize your open windows by tiling, resizing and positioning them to make the 
+What is it for? WinSplit Revolution is a small utility which allows you to easily
+organize your open windows by tiling, resizing and positioning them to make the
 best use of your desktop real estate.
 
 What can it do? WinSplit is especially useful for high-end LCD screens with high
-resolutions because it helps you to efficiently manage many active windows. 
+resolutions because it helps you to efficiently manage many active windows.
 
 
 Features

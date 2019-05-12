@@ -1,11 +1,14 @@
-#include <math.h>
-#include <vector>
-#include <fstream>
 #include <windows.h>
 
 #include "multimonitor_move.h"
 #include "settingsmanager.h"
 #include "fonctions_speciales.h"
+
+#include <wx/msgdlg.h>
+
+#include <math.h>
+#include <vector>
+#include <fstream>
 
 using namespace std;
 

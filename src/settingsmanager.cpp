@@ -1,14 +1,15 @@
 #include "settingsmanager.h"
-// Définition de l'objet "singleton"
-SettingsManager* SettingsManager::m_instance = NULL;
-
-#include <wx/filename.h>
-#include <wx/stdpaths.h>
-#include <wx/msw/registry.h>
 
 #include "main.h"
 #include "virtual_key_manager.h"
 
+#include <wx/filename.h>
+#include <wx/stdpaths.h>
+#include <wx/msw/registry.h>
+#include <wx/msgdlg.h>
+
+// Définition de l'objet "singleton"
+SettingsManager* SettingsManager::m_instance = NULL;
 
 const wxLanguage SettingsManager::AvailableLangIds[] =
 {
@@ -77,7 +78,7 @@ wxString SettingsManager::GetDataDirectory()
 	return m_sUserDataDir;
 }
 
-wxString SettingsManager::GetUserName()
+wxString SettingsManager::getUserName()
 {
 	return m_sUserName;
 }

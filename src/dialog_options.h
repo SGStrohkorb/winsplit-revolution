@@ -1,14 +1,19 @@
 #ifndef OPTIONSDIALOG_H_INCLUDED
 #define OPTIONSDIALOG_H_INCLUDED
 
+#include "auto_placement.h"
+
 #include <wx/dialog.h>
 #include <wx/notebook.h>
-
-#include "settingsmanager.h"
-#include "auto_placement.h"
-#include "update_thread.h"
+#include <wx/combobox.h>
+#include <wx/checkbox.h>
+#include <wx/button.h>
+#include <wx/stattext.h>
+#include <wx/timer.h>
 
 class VirtualNumpad;
+class SettingsManager;
+class ReadVersionThread;
 
 class OptionsDialog : public wxDialog
 {

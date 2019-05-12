@@ -1,12 +1,18 @@
 // Fichier main_application.cpp
 #include <windows.h>
 #include <tlhelp32.h>
-#include <wx/stdpaths.h>
-#include <wx/socket.h>
 
 #include "main.h"
 #include "settingsmanager.h"
 #include "dialog_activewndtools.h"
+#include "tray_icon.h"
+#include "frame_hook.h"
+
+#include <wx/stdpaths.h>
+#include <wx/socket.h>
+#include <wx/msgdlg.h>
+#include <wx/image.h>
+#include <wx/snglinst.h>
 
 using namespace std;
 
@@ -80,6 +86,8 @@ int WinSplitApp::OnExit()
 	SettingsManager::Kill();
 	// On détruit également l'instance du wxSingleInstanceChecker
 	delete p_checker;
+
+  return wxApp::OnExit();
 }
 
 bool WinSplitApp::IsAlreadyRunning()
@@ -87,7 +95,7 @@ bool WinSplitApp::IsAlreadyRunning()
 	SettingsManager &options = SettingsManager::Get();
 	wxString processus = _T ("");
 
-	processus << _T ("WinsplitRevolution") << _T (" - ") << options.GetUserName();
+	processus << _T ("WinsplitRevolution") << _T (" - ") << options.getUserName();
 	p_checker = new wxSingleInstanceChecker();
 	if (!p_checker->Create (processus) )
 	{

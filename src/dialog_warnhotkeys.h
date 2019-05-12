@@ -2,6 +2,12 @@
 #ifndef __WARNHOTKEYFRAME_H__
 #define __WARNHOTKEYFRAME_H__
 
+#include <wx/dialog.h>
+
+class wxStaticText;
+class wxButton;
+class wxCheckBox;
+
 enum IdentifiersWarn
 {
 	ID_CHECKBOX = 2200,

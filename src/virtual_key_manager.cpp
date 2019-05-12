@@ -1,5 +1,8 @@
 #include "virtual_key_manager.h"
 
+#include <Windows.h>
+#include <WinUser.h>
+
 using namespace std;
 
 

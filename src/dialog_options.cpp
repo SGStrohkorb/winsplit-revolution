@@ -1,16 +1,19 @@
-#include <memory>
+#include "dialog_options.h"
+
+#include "main.h"
+
+#include "frame_virtualnumpad.h"
+#include "dialog_download.h"
+#include "virtual_key_manager.h"
+#include "dialog_selectsettings.h"
+#include "update_thread.h"
+#include "tray_icon.h"
 
 #include <wx/colordlg.h>
 #include <wx/zipstrm.h>
 #include <wx/wfstream.h>
 
-#include "dialog_options.h"
-#include "frame_virtualnumpad.h"
-#include "dialog_download.h"
-#include "main.h"
-#include "virtual_key_manager.h"
-#include "dialog_selectsettings.h"
-
+#include <memory>
 
 OptionsDialog::OptionsDialog (wxWindow *parent) : wxDialog (parent, -1, _ ("Options"), wxDefaultPosition),
 	m_options (SettingsManager::Get() )
@@ -672,7 +675,7 @@ void OptionsDialog::OnTimer (wxTimerEvent& event)
 				wxString message;
 				message << _ ("You have the latest version of WinSplit Revoluton. "
 				              "Always feel free to check out the Reloaded fork website fore more information");
-				message << _T ("\nhttps://github.com/pupitetris/winsplit-reloaded");
+				message << _T ("\nhttps://github.com/dozius/winsplit-reloaded");
 				wxMessageBox (message, _T ("WinSplit Revolution"), wxOK, this);
 
 			}

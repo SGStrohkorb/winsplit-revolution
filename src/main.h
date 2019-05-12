@@ -2,10 +2,15 @@
 #ifndef __WINSPLITMAIN__
 #define __WINSPLITMAIN__
 
-#include <wx/snglinst.h>
+//#include <wx/snglinst.h>
+#include <wx/app.h>
 
-#include "tray_icon.h"
-#include "frame_hook.h"
+//#include "tray_icon.h"
+//#include "frame_hook.h"
+
+class wxSingleInstanceChecker;
+class TrayIcon;
+class FrameHook;
 
 class WinSplitApp: public wxApp
 {

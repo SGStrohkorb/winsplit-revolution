@@ -1,7 +1,4 @@
-a ICON "images/winsplit.ico"
-
-1 24 "src/manifest.xml"
-
+a ICON "../images/winsplit.ico"
 
 #include <windows.h>
 

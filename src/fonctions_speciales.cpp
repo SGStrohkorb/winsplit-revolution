@@ -7,6 +7,10 @@
 #include "minimize_restore.h"
 #include "settingsmanager.h"
 
+#include <wx/frame.h>
+#include <wx/stopwatch.h>
+#include <wx/app.h>
+
 using namespace std;
 
 void StoreOrSetMousePosition (bool storeOnly, HWND wnd)

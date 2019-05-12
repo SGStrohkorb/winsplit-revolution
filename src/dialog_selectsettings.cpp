@@ -1,5 +1,7 @@
 #include "dialog_selectsettings.h"
+
 #include <wx/statline.h>
+#include <wx/sizer.h>
 
 SelectSettingsDialog::SelectSettingsDialog (wxWindow* parent, int type) : wxDialog (parent, -1, _ ("Options"), wxDefaultPosition),
 	m_options (SettingsManager::Get() )

@@ -1,9 +1,9 @@
-#include <wx/msw/registry.h>
-#include <wx/filename.h>
-
 #include "lmpreview.h"
+
 #include "layout_screens.h"
 
+#include <wx/msw/registry.h>
+#include <wx/filename.h>
 
 LMPreview::LMPreview (wxWindow* parent) : wxPanel (parent, -1)
 {

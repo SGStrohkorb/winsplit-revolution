@@ -9,13 +9,23 @@
 
 #include <stdio.h>
 
-HWND hwndWinSplitFrame __attribute__ ( (section ("hwnd_winsplit"), shared) ) = NULL;
-HHOOK m_hookMouse __attribute__ ( (section ("hhookMouse"), shared) ) = NULL;
-HHOOK m_hookCBT __attribute__ ( (section ("hhookCBT"), shared) ) = NULL;
+#pragma section("hwnd_winsplit", shared)
+__declspec(allocate("hwnd_winsplit")) HWND hwndWinSplitFrame = NULL;
 
-UINT WSM_STARTMOVING __attribute__ ( (section ("start_moving_message"), shared) ) = 0;
-UINT WSM_STOPMOVING __attribute__ ( (section ("stop_moving_message"), shared) ) = 0;
-UINT WSM_MOLETTE __attribute__ ( (section ("wheel_message"), shared) ) = 0;
+#pragma section("hhookMouse", shared)
+__declspec(allocate("hhookMouse")) HHOOK m_hookMouse = NULL;
+
+#pragma section("hhookCBT", shared)
+__declspec(allocate("hhookCBT")) HHOOK m_hookCBT = NULL;
+
+#pragma section("start_moving_message", shared)
+__declspec(allocate("start_moving_message")) UINT WSM_STARTMOVING = 0;
+
+#pragma section("stop_moving_message", shared)
+__declspec(allocate("stop_moving_message")) UINT WSM_STOPMOVING = 0;
+
+#pragma section("wheel_message", shared)
+__declspec(allocate("wheel_message")) UINT WSM_MOLETTE = 0;
 
 HINSTANCE m_hDllInstance = NULL;
 #ifndef LWA_ALPHA

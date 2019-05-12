@@ -1,11 +1,16 @@
-#include <time.h>
-#include <wx/textfile.h>
-
 #include "dialog_warnhotkeys.h"
-#include "settingsmanager.h"
 
+#include "settingsmanager.h"
 #include "../images/alert.xpm"
 
+#include <wx/textfile.h>
+#include <wx/sizer.h>
+#include <wx/icon.h>
+#include <wx/stattext.h>
+#include <wx/button.h>
+#include <wx/checkbox.h>
+
+#include <time.h>
 
 WarnHotkeyDialog::WarnHotkeyDialog (wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size)
 	: wxDialog (parent, id, title, pos, size),

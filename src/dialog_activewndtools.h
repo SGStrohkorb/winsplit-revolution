@@ -1,8 +1,15 @@
 #ifndef DIALOG_ACTIVEWNDTOOLS_H_INCLUDED
 #define DIALOG_ACTIVEWNDTOOLS_H_INCLUDED
 
+#include <Windows.h>
+
 #include <wx/slider.h>
 #include <wx/filename.h>
+#include <wx/checkbox.h>
+#include <wx/button.h>
+#include <wx/statbmp.h>
+#include <wx/stattext.h>
+#include <wx/dialog.h>
 
 class ActiveWndToolsDialog : public wxDialog
 {

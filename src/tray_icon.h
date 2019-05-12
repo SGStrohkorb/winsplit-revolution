@@ -3,11 +3,13 @@
 #define __TASKBARICON__
 
 #include <wx/taskbar.h>
+#include <wx/timer.h>
+#include <wx/image.h>
 
-#include "frame_virtualnumpad.h"
-#include "hotkeys_manager.h"
-#include "settingsmanager.h"
-#include "update_thread.h"
+class VirtualNumpad;
+class HotkeysManager;
+class SettingsManager;
+class ReadVersionThread;
 
 enum Identifiers_tray
 {
@@ -68,7 +70,6 @@ public:
 	void LoadImages();
 
 	DECLARE_EVENT_TABLE()
-
 };
 
 #endif //__TASKBARICON__

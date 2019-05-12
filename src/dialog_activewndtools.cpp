@@ -3,6 +3,12 @@
 #include <wx/dnd.h>
 #include <wx/filename.h>
 #include <wx/dir.h>
+#include <wx/app.h>
+#include <wx/dcclient.h>
+#include <wx/dcmemory.h>
+#include <wx/image.h>
+#include <wx/sizer.h>
+#include <wx/msgdlg.h>
 
 #include "dialog_activewndtools.h"
 #include "hook.h"
@@ -43,15 +49,16 @@ void ActiveWndToolsDialog::GetScreenShots()
 	GetWindowRect (m_hActiveWindow, &rc);
 	int w = rc.right - rc.left;
 	int h = rc.bottom - rc.top;
-	HDC wndDC = GetWindowDC (m_hActiveWindow);
-	wxWindowDC dc;
-	dc.SetHDC (wndDC);
-	wxSize sz = dc.GetSize();
+	//HDC wndDC = GetWindowDC (m_hActiveWindow);
+  wxWindow dummy;
+  dummy.SetHWND(m_hActiveWindow);
+	wxWindowDC dc(&dummy);
+	//dc.SetHDC (wndDC);
 	m_bmpWindow = wxBitmap (w, h, -1);
 	wxMemoryDC mdc (m_bmpWindow);
 	mdc.Blit (0, 0, w, h, &dc, 0, 0);
 	mdc.SelectObject (wxNullBitmap);
-	ReleaseDC (m_hActiveWindow, wndDC);
+	//ReleaseDC (m_hActiveWindow, wndDC);
 }
 
 void ActiveWndToolsDialog::CreateControls()

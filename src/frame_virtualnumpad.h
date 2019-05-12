@@ -1,6 +1,11 @@
 #ifndef __POPUPTRAY_H__
 #define __POPUPTRAY_H__
 
+#include <wx/frame.h>
+#include <wx/sizer.h>
+#include <wx/checkbox.h>
+#include <wx/panel.h>
+
 enum
 {
 	ID_1 = 1,

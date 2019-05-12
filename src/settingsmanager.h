@@ -1,8 +1,13 @@
 #ifndef SETTINGSMANAGER_H_INCLUDED
 #define SETTINGSMANAGER_H_INCLUDED
 
-#include <time.h>
 #include <wx/xml/xml.h>
+#include <wx/intl.h>
+#include <wx/colour.h>
+#include <wx/gdicmn.h>
+
+#include <time.h>
+
 enum
 {
 	CHECK_UPDATES_ON_START = 1,
@@ -24,7 +29,7 @@ public:
 	// Obtention du répertoire dans lequel stocker les données
 	wxString GetDataDirectory();
 	// Obtention du nom d'utilisateur
-	wxString GetUserName();
+	wxString getUserName();
 	// Est-on en mode "Portable" ou "Classique" ?
 	bool IsPortable();
 

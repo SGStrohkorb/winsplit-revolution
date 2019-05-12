@@ -1,6 +1,14 @@
 #ifndef __MERGEWINDOWS_h__
 #define __MERGEWINDOWS_h__
 
+#include <Windows.h>
+
+#include <wx/dialog.h>
+
+class wxCheckBox;
+class wxSlider;
+class wxButton;
+
 class FusionDialog: public wxDialog
 {
 private:

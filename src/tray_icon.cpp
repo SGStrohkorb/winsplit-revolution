@@ -1,19 +1,21 @@
-#include <windows.h>
-#include <wx/msw/registry.h>
-
-#include "frame_virtualnumpad.h"
 #include "tray_icon.h"
-#include "dialog_about.h"
-#include "dialog_hotkeys.h"
-#include "fonctions_resize.h"
-#include "fonctions_speciales.h"
-#include "dialog_warnhotkeys.h"
-#include "dialog_options.h"
-#include "dialog_layout.h"
-#include "layout_manager.h"
-#include "dialog_download.h"
 
 #include "main.h"
+
+#include "update_thread.h"
+#include "settingsmanager.h"
+#include "hotkeys_manager.h"
+#include "frame_virtualnumpad.h"
+#include "layout_manager.h"
+#include "dialog_about.h"
+#include "dialog_options.h"
+#include "frame_hook.h"
+#include "dialog_hotkeys.h"
+#include "dialog_layout.h"
+#include "dialog_warnhotkeys.h"
+#include "dialog_download.h"
+
+#include <wx/msw/registry.h>
 
 //==============
 // Image loading
@@ -79,21 +81,21 @@ TrayIcon::~TrayIcon()
 
 void TrayIcon::LoadImages()
 {
-	im_about.LoadFile (_T ("..\\images\\about.png"), wxBITMAP_TYPE_PNG);
+	im_about.LoadFile (_T ("images\\about.png"), wxBITMAP_TYPE_PNG);
 
-	im_help.LoadFile (_T ("..\\images\\help.png"), wxBITMAP_TYPE_PNG);
+	im_help.LoadFile (_T ("images\\help.png"), wxBITMAP_TYPE_PNG);
 
-	im_options.LoadFile (_T ("..\\images\\options.png"), wxBITMAP_TYPE_PNG);
+	im_options.LoadFile (_T ("images\\options.png"), wxBITMAP_TYPE_PNG);
 
-	im_layout_settings.LoadFile (_T ("..\\images\\layout.png"), wxBITMAP_TYPE_PNG);
+	im_layout_settings.LoadFile (_T ("images\\layout.png"), wxBITMAP_TYPE_PNG);
 
-	im_hotkeys.LoadFile (_T ("..\\images\\hotkeys.png"), wxBITMAP_TYPE_PNG);
+	im_hotkeys.LoadFile (_T ("images\\hotkeys.png"), wxBITMAP_TYPE_PNG);
 
-	im_startwin_false.LoadFile (_T ("..\\images\\auto_start_false.png"), wxBITMAP_TYPE_PNG);
+	im_startwin_false.LoadFile (_T ("images\\auto_start_false.png"), wxBITMAP_TYPE_PNG);
 
-	im_startwin_true.LoadFile (_T ("..\\images\\auto_start_true.png"), wxBITMAP_TYPE_PNG);
+	im_startwin_true.LoadFile (_T ("images\\auto_start_true.png"), wxBITMAP_TYPE_PNG);
 
-	im_exit.LoadFile (_T ("..\\images\\exit.png"), wxBITMAP_TYPE_PNG);
+	im_exit.LoadFile (_T ("images\\exit.png"), wxBITMAP_TYPE_PNG);
 }
 
 wxMenu* TrayIcon::CreatePopupMenu()
@@ -142,7 +144,7 @@ void TrayIcon::OnMenuClickAbout (wxCommandEvent &event)
 
 void TrayIcon::OnMenuClickHelp (wxCommandEvent& event)
 {
-	wxLaunchDefaultBrowser (_T ("https://pupitetris.github.io/winsplit-reloaded/Revolution/help.html") );
+	wxLaunchDefaultBrowser (_T ("https://dozius.github.io/winsplit-reloaded/Revolution/help.html") );
 }
 
 void TrayIcon::OnMenuClickRule (wxCommandEvent &event)

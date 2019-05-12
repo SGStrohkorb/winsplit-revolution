@@ -1,4 +1,5 @@
 // For Vista and newer "extended" frame compensation:
+#include <Windows.h>
 #include "Dwmapi-compat.h"
 
 #include "layout_manager.h"
