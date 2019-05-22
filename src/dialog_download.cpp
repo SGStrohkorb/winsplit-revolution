@@ -181,8 +181,8 @@ void DownloadDialog::IniText(const wxString& versionFileInfo)
   message << _("A new version of WinSplit Revolution is available:") << _T (" ") << version
           << _T ("\n\n");
   message << _("Press next to download the last version.") << _T ("\n");
-  message << _("You can visit the Reloaded fork website "
-               "https://github.com/dozius/winsplit-reloaded to download it.");
+  message << _(
+      "You can visit the website https://github.com/dozius/winsplit-revolution to download it.");
 
   p_stcTextInfo->SetLabel(message);
 

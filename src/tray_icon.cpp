@@ -142,7 +142,7 @@ void TrayIcon::OnMenuClickAbout(wxCommandEvent& event)
 
 void TrayIcon::OnMenuClickHelp(wxCommandEvent& event)
 {
-  wxLaunchDefaultBrowser(_T ("https://dozius.github.io/winsplit-reloaded/Revolution/help.html"));
+  wxLaunchDefaultBrowser(_T ("https://dozius.github.io/winsplit-revolution/Revolution/help.html"));
 }
 
 void TrayIcon::OnMenuClickRule(wxCommandEvent& event)

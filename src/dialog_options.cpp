@@ -809,10 +809,9 @@ void OptionsDialog::OnTimer(wxTimerEvent& event)
       }
       else {
         wxString message;
-        message << _(
-            "You have the latest version of WinSplit Revoluton. "
-            "Always feel free to check out the Reloaded fork website fore more information");
-        message << _T ("\nhttps://github.com/dozius/winsplit-reloaded");
+        message << _("You have the latest version of WinSplit Revoluton.\n"
+                     "Check out the website for more information\n"
+                     "https://github.com/dozius/winsplit-revolution");
         wxMessageBox(message, _T ("WinSplit Revolution"), wxOK, this);
       }
     }

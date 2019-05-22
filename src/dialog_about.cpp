@@ -17,7 +17,7 @@ AboutDialog::AboutDialog(wxWindow* parent, wxWindowID id, const wxString& title,
                          const wxSize& size, long style)
     : wxDialog(parent, id, title, pos, size, style)
 {
-  wxString dlg_title(_("About WinSplit Reloaded"));
+  wxString dlg_title(_("About WinSplit Revolution"));
 
   dlg_title += _T (" v") + wxGetApp().GetVersion();
 
@@ -49,7 +49,7 @@ void AboutDialog::CreateControls()
   wxTextAttr attr_tmp = ptxtAbout->GetDefaultStyle();
   ptxtAbout->SetDefaultStyle(
       wxTextAttr(*wxBLACK, wxNullColour, wxFont(10, wxDEFAULT, wxFONTSTYLE_NORMAL, wxBOLD)));
-  *ptxtAbout << _T ("WINSPLIT RELOADED")
+  *ptxtAbout << _T ("WINSPLIT REVOLUTION")
              << _T ("\n");
   ;
   ptxtAbout->SetDefaultStyle(attr_tmp);
@@ -57,15 +57,12 @@ void AboutDialog::CreateControls()
              << _T ("\n");
   *ptxtAbout << _("Created by Raphael Lencrerot") << _T ("\n\n");
 
-  *ptxtAbout << _T ("Reloaded fork website https://github.com/dozius/winsplit-reloaded")
+  *ptxtAbout << _T ("Website https://github.com/dozius/winsplit-revolution")
              << _T ("\n\n");
-  *ptxtAbout << _("C++ based software developed thanks to the following:") << _T ("\n");
-  *ptxtAbout << _("wxWidgets GUI Library and Code::Blocks (C++ IDE).") << _T ("\n\n");
 
-  *ptxtAbout << _("This program comes with ABSOLUTELY NO WARRANTY. "
-                  "This is free software, and you are welcome to redistribute it under certain "
-                  "conditions. "
-                  "See GNU GPL v3 license for more details")
+  *ptxtAbout << _("This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you "
+                  "are welcome to redistribute it under certain conditions. See GNU GPL v3 license "
+                  "for more details")
              << _T ("\n\n");
 
   *ptxtAbout << _("WinSplit Revolution Team:") << _T ("\n");
@@ -74,6 +71,8 @@ void AboutDialog::CreateControls()
   *ptxtAbout << _T ("Xavier Perrissoud (developer)")
              << _T ("\n");
   *ptxtAbout << _T ("Arturo Espinosa (developer)")
+             << _T ("\n");
+  *ptxtAbout << _T ("Dan Smith (developer)")
              << _T ("\n\n");
 
   *ptxtAbout << _T ("Special thanks to NX (icons design)");
@@ -127,5 +126,5 @@ void AboutDialog::OnURLClick(wxTextUrlEvent& event)
   wxMouseEvent mouse_event = event.GetMouseEvent();
 
   if (mouse_event.Button(wxMOUSE_BTN_LEFT))
-    wxLaunchDefaultBrowser(_T ("https://github.com/dozius/winsplit-reloaded"));
+    wxLaunchDefaultBrowser(_T ("https://github.com/dozius/winsplit-revolution"));
 }
