@@ -37,32 +37,35 @@ bool ResizeWindow (const int hotkey, bool fromKbd)
 	bool bMoveMouse = fromKbd & SettingsManager::Get().getMouseFollowWindow();
 	if (bMoveMouse) StoreOrSetMousePosition (true, hwnd);
 
-	SetWindowPos (hwnd, HWND_TOP, res.x, res.y, res.width, res.height, flag_resizable ? SWP_SHOWWINDOW : SWP_NOSIZE);
+  int major;
+  wxGetOsVersion(&major, NULL);
+  
+  // Windows Vista or newer.
+  if (major >= 6) {
+    RECT window_rect;
+    GetWindowRect(hwnd, &window_rect);
 
-	{
-		int major;
-		wxGetOsVersion (&major, NULL);
-		if (major >= 6)
-		{
-			// Windows Vista or newer.
+    RECT ext_frame;
+    HRESULT hr = DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &ext_frame, sizeof(RECT));
+    if (SUCCEEDED(hr) &&
+        ext_frame.top != res.x ||
+        ext_frame.left != res.y ||
+        ext_frame.bottom != res.GetBottom() ||
+        ext_frame.right != res.GetRight()) {
 
-			RECT ext_frame;
-			HRESULT hr = DwmGetWindowAttribute (hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &ext_frame, sizeof (RECT) );
-			if (SUCCEEDED (hr) &&
-			        ext_frame.top != res.x ||
-			        ext_frame.left != res.y ||
-			        ext_frame.bottom != res.GetBottom () ||
-			        ext_frame.right != res.GetRight () )
-			{
-				res.SetX (res.x * 2 - ext_frame.left);
-				res.SetY (res.y * 2 - ext_frame.top);
-				res.SetWidth (res.width * 2 - ext_frame.right + ext_frame.left);
-				res.SetHeight (res.height * 2 - ext_frame.bottom + ext_frame.top);
+      LONG left_border = ext_frame.left - window_rect.left;
+      LONG top_border = ext_frame.top - window_rect.top;
+      LONG right_border = window_rect.right - ext_frame.right;
+      LONG bottom_border = window_rect.bottom - ext_frame.bottom;
 
-				SetWindowPos (hwnd, HWND_TOP, res.x, res.y, res.width, res.height, flag_resizable ? SWP_SHOWWINDOW : SWP_NOSIZE);
-			}
-		}
-	}
+      res.SetX(res.x - left_border);
+      res.SetY(res.y - top_border);
+      res.SetWidth(res.width + left_border + right_border);
+      res.SetHeight(res.height + top_border + bottom_border);
+    }
+  }
+
+  SetWindowPos(hwnd, HWND_TOP, res.x, res.y, res.width, res.height, flag_resizable ? SWP_SHOWWINDOW : SWP_NOSIZE);
 
 	if (bMoveMouse) StoreOrSetMousePosition (false, hwnd);
 
