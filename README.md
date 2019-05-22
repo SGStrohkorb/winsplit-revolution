@@ -1,67 +1,21 @@
-# WinSplit Reloaded
-A fork of WinSplit Revolution, an advanced window sizer for Windows
-Vista and newer versions of Microsoft Windows.
+# WinSplit Revolution
 
-This project recovers the code from WinSplit Revolution, the famous
-project whose code was originally released under the GPLv3 at
-developpez.com:
+WinSplit Revolution is a small utility which allows you to easily organize your
+open windows by tiling, resizing and positioning them to make the best use of
+your desktop real estate.
 
-http://projets.developpez.com/projects/winsplit-revolution/
+## History
 
-it's version 9.02, publicly released on 2009/02/27.
+This project recovers the code for v9.02 of WinSplit Revolution from the
+[developpez](http://projets.developpez.com/projects/winsplit-revolution/) site.
+Fixes and enhancements from versions 11.02, 11.03 and 11.04 have probably been
+lost.
 
-WinSplit Revolution
-Copyright (C) 2005-2009  Raphael Lencrerot
+The main goal of this project is to get sizing and positioning working correctly
+for windows 10. The [invisible frame](https://github.com/Maximus5/ConEmu/issues/284#issuecomment-257339519)
+ in windows 10 breaks sizing and positioning. A fix for this is already
+ implemented.
 
-Fixes and enhancements from versions 11.02, 11.03 and 11.04 have
-probably been lost, and they would have to be redone.
+## Supported Systems
 
-The Winsplit Reloaded project intends to make the software work for
-Windows 10's theme, and eventually remove many of its usability
-idiosyncrasies.
-
-Please read the LICENSE file for the legal terms under which this
-software is delivered to you.
-
-Original Changelog: https://dozius.github.io/winsplit-reloaded/Revolution/Changelog.html
-
-User Manual: https://dozius.github.io/winsplit-reloaded/Revolution/help.html
-
-From the original WinSplit Revolution README:
-https://dozius.github.io/winsplit-reloaded/Revolution/README.txt
-
-Overview
---------
-
-What is it for? WinSplit Revolution is a small utility which allows you to easily
-organize your open windows by tiling, resizing and positioning them to make the
-best use of your desktop real estate.
-
-What can it do? WinSplit is especially useful for high-end LCD screens with high
-resolutions because it helps you to efficiently manage many active windows.
-
-
-Features
---------
-
-* Automated window handling (resize, move, reorganize, close tasks)
-* Shape - process association
-* Global hotkeys and clickable virtual numpad
-* Automatic startup
-* Automatic update
-* Moving a window with mouse (drag'n'go)
-* Hotkey configure
-* Layout configure
-* Fusion between 2 windows
-* Minimize/Restore by hotkey
-* Mosaic mode
-
-
-Supported systems
------------------
-
-WinSplit Revolution has been tested on the following platforms:
-- Windows XP, 2003 and Vista (9x/ME/NT4/2000 not supported)
-
-Tested architecture:
-- x86
+This fork is only tested against windows 10 x64.
