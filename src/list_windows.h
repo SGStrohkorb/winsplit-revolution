@@ -3,18 +3,12 @@
 
 #include <windows.h>
 
-
-class ListWindows
-{
+class ListWindows {
 private:
-
 public:
-	ListWindows() {}
-	static bool ValidateWindow (HWND hwnd, bool accept_tmw = true);
-	static HWND ListWindow();
+  ListWindows() {}
+  static bool ValidateWindow(HWND hwnd, bool accept_tmw = true);
+  static HWND ListWindow();
 };
-
-
-
 
 #endif // __LISTER_FENETRE_H__

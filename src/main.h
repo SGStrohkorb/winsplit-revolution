@@ -12,39 +12,33 @@ class wxSingleInstanceChecker;
 class TrayIcon;
 class FrameHook;
 
-class WinSplitApp: public wxApp
-{
+class WinSplitApp : public wxApp {
 private:
-	TrayIcon* p_tray;
+  TrayIcon* p_tray;
 
-	FrameHook* p_frameHook;
+  FrameHook* p_frameHook;
 
-	wxSingleInstanceChecker *p_checker;
+  wxSingleInstanceChecker* p_checker;
 
-	void OnCloseSession (wxCloseEvent& event);
+  void OnCloseSession(wxCloseEvent& event);
+
 public:
-	WinSplitApp();
-	~WinSplitApp();
-	void ShowTrayIcon();
+  WinSplitApp();
+  ~WinSplitApp();
+  void ShowTrayIcon();
 
-	bool IsAlreadyRunning();
-	virtual bool OnInit();
-	int OnExit();
+  bool IsAlreadyRunning();
+  virtual bool OnInit();
+  int OnExit();
 
-	wxString GetVersion(); // waiting for the real version
+  wxString GetVersion(); // waiting for the real version
 
-	TrayIcon* GetTrayInstance()
-	{
-		return p_tray;
-	}
-	FrameHook* GetFrameHook()
-	{
-		return p_frameHook;
-	}
+  TrayIcon* GetTrayInstance() { return p_tray; }
+  FrameHook* GetFrameHook() { return p_frameHook; }
 
-	DECLARE_EVENT_TABLE()
+  DECLARE_EVENT_TABLE()
 };
 
-DECLARE_APP (WinSplitApp)
+DECLARE_APP(WinSplitApp)
 
 #endif //__WINSPLITMAIN__

@@ -3,32 +3,25 @@
 
 #include "settingsmanager.h"
 
-class ReadVersionThread: public wxThread
-{
+class ReadVersionThread : public wxThread {
 private:
-	SettingsManager &m_options;
-	bool m_flagForceChecking;
-	double m_host_version;
-	wxString m_strVersion;
-	unsigned int m_timeout;
+  SettingsManager& m_options;
+  bool m_flagForceChecking;
+  double m_host_version;
+  wxString m_strVersion;
+  unsigned int m_timeout;
 
 public:
-	ReadVersionThread (const unsigned int& timeout);
-	~ReadVersionThread();
+  ReadVersionThread(const unsigned int& timeout);
+  ~ReadVersionThread();
 
-	void ForceChecking();
-	bool HaveToCheck();
+  void ForceChecking();
+  bool HaveToCheck();
 
-	wxString GetFeatures()
-	{
-		return m_strVersion;
-	}
-	double GetHostVersion()
-	{
-		return m_host_version;
-	}
+  wxString GetFeatures() { return m_strVersion; }
+  double GetHostVersion() { return m_host_version; }
 
-	void* Entry();
+  void* Entry();
 };
 
 #endif // __WINSPLIR_UPDATES_H__
