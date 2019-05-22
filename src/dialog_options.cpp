@@ -25,20 +25,20 @@ OptionsDialog::OptionsDialog (wxWindow *parent) : wxDialog (parent, -1, _ ("Opti
 	wxBoxSizer *mainsizer = new wxBoxSizer (wxVERTICAL);
 	p_nBook = new wxNotebook (this, -1);
 
-	// Page "Général"
+	// "General" page
 	CreateAndFillPage_General (p_nBook);
-	// Page "Virtual Numpad"
+	// "Virtual Numpad" page
 	CreateAndFillPage_Numpad (p_nBook);
-	// Page "Web updates"
+	// "Web updates" page
 	CreateAndFillPage_WebUpdate (p_nBook);
-	// Page "Drag'N'Go"
+	// "Drag'N'Go" page
 	CreateAndFillPage_DragNGo (p_nBook);
-	// Page "Divers"
+	// "Miscellaneous" page
 	CreateAndFillPage_Misc (p_nBook);
 
 	mainsizer->Add (p_nBook, 0, wxALL | wxEXPAND, 0);
 
-	// Panel contenant les boutons
+	// Panel containing the buttons
 	wxPanel *cmdPanel = new wxPanel (this, -1);
 	wxBoxSizer *btnSizer = new wxBoxSizer (wxHORIZONTAL);
 	btnSizer->AddStretchSpacer (1);
@@ -60,7 +60,7 @@ OptionsDialog::OptionsDialog (wxWindow *parent) : wxDialog (parent, -1, _ ("Opti
 
 OptionsDialog::~OptionsDialog()
 {
-	// Si  l'utilisateur ferme la fenetre pendant la recherche de mise à jour
+	// If the user closes the window while searching for an update
 	if (m_timer.IsRunning() )
 		m_timer.Stop();
 
@@ -76,14 +76,14 @@ OptionsDialog::~OptionsDialog()
 
 void OptionsDialog::CreateAndFillPage_General (wxNotebook *book)
 {
-	// Sizer général de la page
+	// General Sizer of the page
 	wxBoxSizer *pageszr;
-	// Variable pour les différents wxStaticBoxSizer
+	// Variable for different wxStaticBoxSizer's
 	wxStaticBoxSizer *stbszr;
 
 	wxPanel* pnlGeneral = new wxPanel (book, -1);
 	pageszr = new wxBoxSizer (wxVERTICAL);
-	// Première zone : le choix de la langue
+	// First zone: the choice of language
 	stbszr = new wxStaticBoxSizer (wxHORIZONTAL, pnlGeneral, _ ("Language") );
 	stbszr->Add (new wxStaticText (pnlGeneral, -1, _ ("Choose language") ), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 	p_cmbLanguage = new wxComboBox (pnlGeneral, -1, wxEmptyString, wxDefaultPosition, wxSize (150, -1), 0, NULL, wxCB_READONLY);
@@ -93,13 +93,13 @@ void OptionsDialog::CreateAndFillPage_General (wxNotebook *book)
 	stbszr->AddStretchSpacer (1);
 	stbszr->Add (p_cmbLanguage, 0, wxALL | wxEXPAND, 5);
 	pageszr->Add (stbszr, 0, wxALL | wxEXPAND, 5);
-	// Deuxième zone : "Divers"
+	// Second zone: "Miscellaneous"
 	stbszr = new wxStaticBoxSizer (wxHORIZONTAL, pnlGeneral, _ ("Miscellaneous") );
 	p_checkTmw = new wxCheckBox (pnlGeneral, -1, _ ("Take into account topmost windows") );
 	p_checkTmw->SetValue (m_options.AcceptTopMostWindows() );
 	stbszr->Add (p_checkTmw, 0, wxALL | wxEXPAND, 5);
 	pageszr->Add (stbszr, 0, wxLEFT | wxRIGHT | wxEXPAND, 5);
-	// Troisième zone : Supprimer des valeurs de l'auto-placement
+	// Third zone: Delete values from auto-placement
 	stbszr = new wxStaticBoxSizer (wxHORIZONTAL, pnlGeneral, _ ("Delete saved Auto-placements") );
 	p_btnDeleteAuto = new wxButton (pnlGeneral, -1, _ ("&Delete") );
 	stbszr->Add (p_btnDeleteAuto, 0, wxALL | wxEXPAND, 5);
@@ -107,7 +107,7 @@ void OptionsDialog::CreateAndFillPage_General (wxNotebook *book)
 	p_cmbAutoPlacement = new wxComboBox (pnlGeneral, -1, wxEmptyString, wxDefaultPosition, wxSize (180, -1), 0, NULL, wxCB_READONLY);
 	stbszr->Add (p_cmbAutoPlacement, 0, wxALL | wxEXPAND, 5);
 	pageszr->Add (stbszr, 0, wxALL | wxEXPAND, 5);
-	// Quatrième zone : les fichiers temporaires
+	// Fourth zone: temporary files
 	stbszr = new wxStaticBoxSizer (wxVERTICAL, pnlGeneral, _ ("Screenshots temporary files") );
 	wxBoxSizer* line1 = new wxBoxSizer (wxHORIZONTAL);
 	p_checkDelTmpFiles = new wxCheckBox (pnlGeneral, -1, _ ("Delete automatically") );
@@ -125,7 +125,7 @@ void OptionsDialog::CreateAndFillPage_General (wxNotebook *book)
 	line1->Add (p_btnOpenFolder, 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 	stbszr->Add (line1, 0, wxALL | wxEXPAND, 5);
 	pageszr->Add (stbszr, 0, wxLEFT | wxRIGHT | wxEXPAND, 5);
-	// Cinquième zone : import / export des settings
+	// Fifth zone: import / export settings
 	stbszr = new wxStaticBoxSizer (wxHORIZONTAL, pnlGeneral, _ ("Settings managements") );
 	p_btnExportOpt = new wxButton (pnlGeneral, -1, _ ("Export settings") );
 	stbszr->Add (p_btnExportOpt, 0, wxALL, 5);
@@ -136,7 +136,7 @@ void OptionsDialog::CreateAndFillPage_General (wxNotebook *book)
 	pnlGeneral->SetSizer (pageszr);
 	book->AddPage (pnlGeneral, _ ("General") );
 
-	// Remplissage de la combobox pour l'auto-placement
+	// Fill the combobox for self-placement
 	wxArrayString array_name (m_autoPlacement.GetArrayName() );
 	p_cmbAutoPlacement->Clear();
 
@@ -207,15 +207,15 @@ void OptionsDialog::CreateAndFillPage_Numpad (wxNotebook *book)
 
 void OptionsDialog::CreateAndFillPage_WebUpdate (wxNotebook *book)
 {
-	// Sizer général de la page
+	// General Sizer of the page
 	wxBoxSizer *pageszr;
-	// Variable pour les différents wxStaticBoxSizer
+	// Variable for different wxStaticBoxSizer's
 	wxStaticBoxSizer *stbszr;
 	wxBoxSizer *hszr;
 
 	wxPanel *pnlUpdates = new wxPanel (p_nBook, -1);
 	pageszr = new wxBoxSizer (wxVERTICAL);
-	// Première zone : les mises à jour automatiques
+	// First zone: automatic updates
 	stbszr = new wxStaticBoxSizer (wxVERTICAL, pnlUpdates, _ ("Checking for update") );
 	p_checkUpdate = new wxCheckBox (pnlUpdates, -1, _ ("Check website for WinSplit updates") );
 	p_checkUpdate->SetValue (m_options.hasToCheckForUpdates() );
@@ -233,7 +233,7 @@ void OptionsDialog::CreateAndFillPage_WebUpdate (wxNotebook *book)
 	hszr->Add (p_cmbUpdate, 0, wxALL | wxEXPAND, 5);
 	stbszr->Add (hszr, 0, wxALL | wxEXPAND, 5);
 	pageszr->Add (stbszr, 0, wxALL | wxEXPAND, 5);
-	// Deuxième zone : vérification manuelle
+	// Second zone: manual update
 	stbszr = new wxStaticBoxSizer (wxHORIZONTAL, pnlUpdates, _ ("Manual check :") );
 	stbszr->Add (new wxStaticText (pnlUpdates, -1, _ ("Perform a manual web update check now") ), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 	p_btnCheckNow = new wxButton (pnlUpdates, -1, _ ("Check now") );
@@ -247,9 +247,9 @@ void OptionsDialog::CreateAndFillPage_WebUpdate (wxNotebook *book)
 
 void OptionsDialog::CreateAndFillPage_DragNGo (wxNotebook *book)
 {
-	// Sizer général de la page
+	// General Sizer of the page
 	wxBoxSizer *pageszr;
-	// Variable pour les différents wxStaticBoxSizer
+	// Variable for different wxStaticBoxSizer's
 	wxStaticBoxSizer *stbszr;
 	wxBoxSizer *hszr;
 	wxFlexGridSizer *grdszr;
@@ -257,7 +257,7 @@ void OptionsDialog::CreateAndFillPage_DragNGo (wxNotebook *book)
 
 	wxPanel *pnlDragNGo = new wxPanel (p_nBook);
 	pageszr = new wxBoxSizer (wxVERTICAL);
-	// Première zone : les options
+	// First zone: options
 	stbszr = new wxStaticBoxSizer (wxVERTICAL, pnlDragNGo, _ ("Drag'N'Go settings :") );
 	hszr = new wxBoxSizer (wxHORIZONTAL);
 	p_checkEnableDnG = new wxCheckBox (pnlDragNGo, wxID_ANY, _ ("Enable Drag'N'Go") );
@@ -279,7 +279,7 @@ void OptionsDialog::CreateAndFillPage_DragNGo (wxNotebook *book)
 	hszr->Add (p_txtDnGRadius, 0, wxALL | wxEXPAND, 5);
 	stbszr->Add (hszr, 0, wxALL | wxEXPAND, 0);
 	pageszr->Add (stbszr, 0, wxALL | wxEXPAND, 5);
-	// Deuxième zone : le style
+	// Second zone: the style
 	stbszr = new wxStaticBoxSizer (wxVERTICAL, pnlDragNGo, _ ("Destination zone style :") );
 	grdszr = new wxFlexGridSizer (2, 2, 2, 2);
 	grdszr->Add (new wxStaticText (pnlDragNGo, wxID_ANY, _ ("Click here to select preview zone background color :") ), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -297,7 +297,7 @@ void OptionsDialog::CreateAndFillPage_DragNGo (wxNotebook *book)
 	p_sliderZoneTransparency->SetValue (m_options.getDngZoneTransparency() );
 	stbszr->Add (p_sliderZoneTransparency, 0, wxALL | wxEXPAND, 5);
 	pageszr->Add (stbszr, 0, wxALL | wxEXPAND, 5);
-	// Troisième zone : les touches d'activation
+	// Third zone: activation keys
 	stbszr = new wxStaticBoxSizer (wxHORIZONTAL, pnlDragNGo, _ ("Modifier Activation :") );
 	hszr = new wxBoxSizer (wxHORIZONTAL);
 
@@ -324,9 +324,9 @@ void OptionsDialog::CreateAndFillPage_DragNGo (wxNotebook *book)
 
 void OptionsDialog::CreateAndFillPage_Misc (wxNotebook *book)
 {
-	// Sizer général de la page
+	// General Sizer of the page
 	wxBoxSizer *pageszr;
-	// Variable pour les différents wxStaticBoxSizer
+	// Variable for different wxStaticBoxSizer's
 	wxStaticBoxSizer *stbszr;
 	wxStaticText *label;
 	wxBoxSizer *lnszr;
@@ -355,7 +355,7 @@ void OptionsDialog::CreateAndFillPage_Misc (wxNotebook *book)
 	lnszr->Add (p_txtZOrderDelay, 0, wxALL, 0);
 	stbszr->Add (lnszr, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 5);
 	pageszr->Add (stbszr, 0, wxALL | wxEXPAND, 5);
-	// Zone "Options diverses"
+	// Zone "Miscellaneous Options"
 	stbszr = new wxStaticBoxSizer (wxVERTICAL, pnlMisc, _ ("Miscellaneous options :") );
 	p_checkFollowWnd = new wxCheckBox (pnlMisc, wxID_ANY, _ ("Move the mouse pointer to follow the active window.") );
 	p_checkFollowWnd->SetValue (m_options.getMouseFollowWindow() );
@@ -477,7 +477,7 @@ void OptionsDialog::OnSomethingHasChanged (wxCommandEvent &event)
 	int id = event.GetId();
 	if (id == p_cmbLanguage->GetId() )
 	{
-		// On n'active le bouton "Appliquer" que si a sélection a changé
+		// Only activate the "Apply" button if a selection has changed
 		if (p_cmbLanguage->GetSelection() == m_options.getLanguageIndex() )
 			bEnable = false;
 	}
@@ -493,7 +493,7 @@ void OptionsDialog::OnSomethingHasChanged (wxCommandEvent &event)
 	}
 	else if (id == p_cmbUpdate->GetId() )
 	{
-		// On n'active le bouton "Appliquer" que si la sélection a changé
+    // Only activate the "Apply" button if a selection has changed
 		if (p_cmbUpdate->GetSelection() == (m_options.getUpdateCheckFrequency() - 1) )
 			bEnable = false;
 	}
@@ -508,7 +508,7 @@ void OptionsDialog::OnSomethingHasChanged (wxCommandEvent &event)
 	}
 	else if (id == p_cmbDeleteTime->GetId() )
 	{
-		// On n'active le bouton "Appliquer" que si la sélection a changé
+    // Only activate the "Apply" button if a selection has changed
 		if (p_cmbUpdate->GetSelection() == (m_options.getAutoDeleteTime() ) )
 			bEnable = false;
 	}
@@ -545,8 +545,8 @@ bool OptionsDialog::ApplyChanges()
 			return false;
 		}
 	}
-	// On vérifie la valeur du rayon de détection
-	// Pour le Drag'n'Go est Ok, sinon, on ne sauve aucune options
+  // Check the value of the detection radius
+  // For Drag'n'Go is Ok, otherwise we do not save any options
 	wxString sValue = p_txtDnGRadius->GetValue();
 	sValue.ToLong (&l);
 	if (l <= 0) l = 0;
@@ -569,29 +569,29 @@ bool OptionsDialog::ApplyChanges()
 	}
 	else m_options.setDnGDetectionRadius ( (int) l);
 
-	// Onglet "Général"
+	// "General" tab
 	m_options.setLanguageIndex (p_cmbLanguage->GetSelection() );
 	m_options.setAcceptTopMostWindows (p_checkTmw->GetValue() );
 	m_options.setAutoDeleteTempFiles (p_checkDelTmpFiles->GetValue() );
 	m_options.setAutoDeleteTime (p_cmbDeleteTime->GetSelection() );
-	// Onglet "Virtual Numpad"
+	// "Virtual Numpad" tab
 	m_options.setSaveNumpadPosOnExit (p_checkSaveVirtNumpad->GetValue() );
 	m_options.setShowNumpadAtBoot (p_checkShowVirtStart->GetValue() );
 	m_options.setNumpadAutoHide (p_checkAutoHide->GetValue() );
 	p_virtNumpad->SetCheckValue (!p_checkAutoHide->GetValue() );
 	m_options.setNumpadTransparency (p_sliderNumpadTransparency->GetValue() );
 	p_virtNumpad->SetTransparency (p_sliderNumpadTransparency->GetValue() );
-	// Onglet "Web update"
+	// "Web update" tab
 	m_options.setCheckForUpdates (p_checkUpdate->GetValue() );
 	m_options.setUpdateCheckFrequency (p_cmbUpdate->GetSelection() + 1);
-	// Onglet "Drag'N'Go
+	// "Drag'N'Go tab
 	m_options.EnableDragNGo (p_checkEnableDnG->GetValue() );
 	m_options.setDnGZoneBgColor (p_pnlZoneBgColor->GetBackgroundColour() );
 	m_options.setDnGZoneFgColor (p_pnlZoneFgColor->GetBackgroundColour() );
 	m_options.setDnGZoneTransparency (p_sliderZoneTransparency->GetValue() );
 	m_options.setDnGMod1 (mod_manager.GetValueFromIndex (p_cmbModifier1->GetCurrentSelection() ) );
 	m_options.setDnGMod2 (mod_manager.GetValueFromIndex (p_cmbModifier2->GetCurrentSelection() ) );
-	// Onglet "Divers"
+	// "Miscellaneous" tab
 	m_options.setXMouseActivation (p_checkEnableXMouse->GetValue() );
 	m_options.setAutoZOrderActivation (p_checkEnableZOrder->GetValue() );
 	sValue = p_txtZOrderDelay->GetValue();
@@ -608,7 +608,7 @@ void OptionsDialog::OnTimer (wxTimerEvent& event)
 {
 	if (!p_updateThread)
 	{
-		// timeout = 5 car devrait rapidement récupérer le fichier version.txt
+		// timeout = 5 because should quickly recover version.txt file
 		p_updateThread = new ReadVersionThread (5);
 		p_updateThread->ForceChecking();
 		p_updateThread->Create();
@@ -666,7 +666,7 @@ void OptionsDialog::OnTimer (wxTimerEvent& event)
 				if (dialog.ShowModal() == wxOK)
 				{
 					wxGetApp().GetTrayInstance()->RemoveIcon();
-					/// En attente de mieux
+					// Waiting for better
 					exit (0);
 				}
 			}

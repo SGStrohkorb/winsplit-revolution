@@ -49,7 +49,7 @@ void* ReadVersionThread::Entry()
 				stream->Read (szBuff, 1024);
 			}
 
-			// Probleme survenu lors de la lecture
+			// Trouble while reading
 			if (stream->GetLastError() != wxSTREAM_EOF)
 			{
 				m_strVersion = wxEmptyString;

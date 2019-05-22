@@ -60,7 +60,7 @@ void SelectSettingsDialog::CreateControls()
 	p_lstChoices->Append (_ ("Hotkeys settings") );
 	p_lstChoices->Append (_ ("Layout settings") );
 	p_lstChoices->Append (_ ("Registered placements") );
-	// Par defaut, on selectionne tout
+	// Select all by default
 	SetSelectionFlags (SST_ALL);
 
 	mainsizer->SetSizeHints (this);

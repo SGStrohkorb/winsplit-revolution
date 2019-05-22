@@ -7,14 +7,14 @@
 #include <wx/checklst.h>
 #include <wx/button.h>
 
-// Flags pour les valeurs selectionnees
+// Flags for the selected values
 #define SST_NONE	0
 #define SST_GENERAL	1
 #define SST_HOTKEYS	2
 #define SST_LAYOUT	4
 #define SST_PLACES	8
 #define SST_ALL 	15
-// Differents types pour la boite de dialogue
+// Different types for the dialog box
 #define SSDT_EXPORT	1
 #define SSDT_IMPORT	2
 #define SSDT_DELETE	3

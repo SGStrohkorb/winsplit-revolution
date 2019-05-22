@@ -8,7 +8,7 @@
 #include <wx/msw/registry.h>
 #include <wx/msgdlg.h>
 
-// Définition de l'objet "singleton"
+// Definition of the "singleton" object
 SettingsManager* SettingsManager::m_instance = NULL;
 
 const wxLanguage SettingsManager::AvailableLangIds[] =
@@ -247,9 +247,11 @@ bool SettingsManager::getAutoDeleteTempFiles()
 
 void SettingsManager::setAutoDeleteTime (int value)
 {
-	// la variable peut avoir les valeurs suivantes :
-	// 0 = suppression des fichiers au démarrage de WinSplit
-	// 1 = suppression des fichiers lorsque WinSplit se termine
+  /* 
+   * the variable can have the following values:
+   * 0 = delete files when WinSplit starts
+   * 1 = delete files when WinSplit finishes
+   */
 	m_iAutoDelTime = value;
 }
 
@@ -568,45 +570,44 @@ bool SettingsManager::getMinMaxCycle()
 
 void SettingsManager::Initialize()
 {
-	// On n'appelle pas deux fois cette méthode
+	// Do not call this method twice
 	if (m_bInitialized) return;
 
-	// Récupération du nom d'utilisateur
+	// Retrieve the user name
 	m_sUserName = wxGetUserId();
 
 	m_sUserDataDir = wxEmptyString;
 	wxFileName FName (wxGetApp().argv[0]);
 	m_sAppPath = FName.GetPath (wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR);
-	// On se place dans le répertoire de l'application
+	// Set working directory to the directory of the application
 	wxSetWorkingDirectory (m_sAppPath);
-	// On regarde d'abord si le fichier de données existe dans le répertoire de l'application.
+	// Check if settings file exists in the application directory. If it is, we are in portable mode.
 	FName.SetFullName (_T ("Settings.xml") );
-	// Si c'est le cas, on est en mode "portable"
 	m_bPortableMode = FName.FileExists();
 	if (!m_bPortableMode)
 	{
-		// Sinon, on est en mode "classique"
+		// We are in "Classic" mode
 		FName.SetPath (wxStandardPaths::Get().GetUserDataDir() );
-		// On s'assure que le répertoire existe, sinon, on le crée
+		// Create the directory if it doesn't exist
 		if (!wxDirExists (FName.GetPath (wxPATH_GET_VOLUME) ) )
 			wxMkdir (FName.GetPath (wxPATH_GET_VOLUME) );
 	}
 	m_sUserDataDir = FName.GetPath (wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR);
-	// Valeurs par défaut des variables
-	// Avertir des erreurs avec les Hotkeys
+	// Default values of variables
+	// Warn about errors with Hotkeys
 	m_bShowHKWarnings = true;
-	// Recherche auto des mises à jour
+	// Auto search for updates
 	m_bCheckForUpdates = true;
 	m_iUpdateCheckFrequency = CHECK_UPDATES_ON_START;
-	// Langue par défaut = celle du système
+	// Default language = system language
 	m_iLanguage = wxLANGUAGE_DEFAULT;
-	// On indique au système ou se trouvent les fichiers de langue
+	// The path where the language files are located
 	wxLocale::AddCatalogLookupPathPrefix (m_sAppPath + _T ("languages") );
-	// On initialise la variable wxLocale avec la langue par défaut du système
+	// Initialize the variable wxLocale with the default language of the system
 	if (!m_locale.Init (wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) )
 		wxMessageBox (_T ("Unable to set default language !"), _ ("Error"), wxICON_ERROR);;
 	m_locale.AddCatalog (_T ("winsplit") );
-	// On en profite pour vérifier si la langue système correspond à une langue supportée par Winsplit
+	// Check if the system language corresponds to a language supported by Winsplit
 	int iCount = GetAvailableLanguagesCount();
 	for (int i = 0; i < iCount; i++)
 	{
@@ -616,12 +617,12 @@ void SettingsManager::Initialize()
 			break;
 		}
 	}
-	// Pour être certains d'avoir le point dans les nombres à virgule
+	// Use decimal numeric separators
 	setlocale (LC_NUMERIC, "C");
-	// Comportement envers les fichiers temporaires des captures d'écran
-	m_bAutoDelTmpFiles = true; // On supprime automatiquement
-	m_iAutoDelTime = 0; // Suppression au démarrage de WinSplit
-	// Position, style, comportement et transparence du Virtual Numpad
+	// Behaviour of temporary screen shot files
+	m_bAutoDelTmpFiles = true; // Auto delete
+	m_iAutoDelTime = 0; // Supress winsplit start up
+	// Position, style, behaviour and transparency of Virtual Numpad
 	m_iVN_Transparency = 65;
 	m_iVN_PosX = 640;
 	m_iVN_PosY = 480;
@@ -629,11 +630,11 @@ void SettingsManager::Initialize()
 	m_bVN_AutoHide = false;
 	m_bVN_ShownAtBoot = false;
 	m_bVN_SavePosOnExit = true;
-	// Ne pas prendre en compte les fenêtre "TopMost"
+	// Do not take into account the "TopMost" windows
 	m_bAcceptTopmostWindows = false;
 	m_tLastUpdateCheck = time (NULL);
 
-	// Paramètres du Drag'N'Go
+	// Drag'N'Go settings
 	m_bDNG_Enabled = true;
 	m_iDNG_Radius = 100;
 	m_iDNG_timer = 100;
@@ -643,14 +644,14 @@ void SettingsManager::Initialize()
 	m_modDNG1 = 0x02;  //MOD_CONTROL
 	m_modDNG2 = 0x01;  //MOD_ALT
 
-	// Par défaut, activer l'option "La souris suit la fenêtre"
+	// By default, activate the option "Mouse follows window"
 	m_bMouseFollowWnd = false;
-	// Par défaut la souris ne suit la fenêtre que si elle est dans sa zone client
+	// By default the mouse only follows the window if it is in its client area
 	m_bMouseFollowOnlyWhenIn = true;
-	// Par défaut, les Hotkeys "Minimize" et "Maximize" gardent leur fonctionnement classique
+	// By default, the "Minimize" and "Maximize" Hotkeys keep their classic operation
 	m_bMinMaxCycle = false;
 
-	// On essaye de lire les options depuis le fichier xml
+	// Try to read the options from the xml file
 	LoadSettings();
 
 	m_bInitialized = true;
@@ -658,13 +659,12 @@ void SettingsManager::Initialize()
 
 void SettingsManager::LoadSettings()
 {
-	// Le nom du fichier contenant les options
+	// The name of the file containing the settings
 	wxFileName fname (m_sUserDataDir + _T ("Settings.xml") );
-	// Si le fichier d'options n'existe pas
+	// If the settings file does not exist
 	if (!fname.FileExists() )
 	{
-		// On fait en sorte que Winsplit le crée
-		// Pour cela, on déclare les réglages par défaut comme ayant été modifiés
+		// make sure that Winsplit creates it and declare the default settings as having been modified
 		m_bIsModified = true;
 		return;
 	}
@@ -672,12 +672,11 @@ void SettingsManager::LoadSettings()
 	wxXmlNode *node;
 	wxString sValue;
 
-	// On essaye de charger le fichier contenant les options
+	// Try to load the file containing the settings
 	doc.Load (fname.GetFullPath() );
 	if (!doc.IsOk() )
 	{
-		// S'il y a eut une erreur au chargement, on fait en sorte
-		// que les options soient ré-écrites
+		// If there was an error loading, we make sure that settings are rewritten
 		m_bIsModified = true;
 		return;
 	}

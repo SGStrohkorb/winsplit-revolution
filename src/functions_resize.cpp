@@ -9,10 +9,10 @@
 
 #include "auto_placement.h"
 #include "dialog_fusion.h"
-#include "liste_windows.h"
+#include "list_windows.h"
 #include "multimonitor_move.h"
 #include "layout_manager.h"
-#include "fonctions_speciales.h"
+#include "functions_special.h"
 
 //=============================
 // Resize window

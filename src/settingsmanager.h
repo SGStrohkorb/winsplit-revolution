@@ -20,22 +20,22 @@ class SettingsManager
 public:
 	SettingsManager();
 	virtual ~SettingsManager();
-	// Création / récupération de l'objet unique
+	// Creating / retrieving the single object
 	static SettingsManager& Get();
-	// Destruction de l'objet unique
+	// Destruction of the single object
 	static void Kill();
-	// Vérification de l'intégrité de l'objet
+	// Verify the integrity of the object
 	bool IsOk();
-	// Obtention du répertoire dans lequel stocker les données
+	// Obtain the directory in which to store the data
 	wxString GetDataDirectory();
-	// Obtention du nom d'utilisateur
+	// Obtain the user name
 	wxString getUserName();
-	// Est-on en mode "Portable" ou "Classique" ?
+	// Is it in "Portable" or "Classic" mode?
 	bool IsPortable();
 
-	// Accesseurs
+	// Accessors
 	wxString getAppPath();
-	// Options générales
+	// General options
 	bool AcceptTopMostWindows();
 	void setAcceptTopMostWindows (bool do_it);
 	bool hasToShowHotkeysWarnings();
@@ -49,7 +49,7 @@ public:
 	// Virtual Numpad
 	int getNumpadTransparency();
 	void setNumpadTransparency (int value);
-	bool getNumpadStyle(); // Reduit ou non
+	bool getNumpadStyle(); // Reduced or not
 	void setNumpadStyle (bool reduced);
 	bool getNumpadAutoHide();
 	void setNumpadAutoHide (bool autoHide);
@@ -85,7 +85,7 @@ public:
 	unsigned int getDnGMod2();
 	void setDnGMod1 (const unsigned int& mod);
 	void setDnGMod2 (const unsigned int& mod);
-	// Divers
+	// Various
 	void setXMouseActivation (bool enable);
 	bool IsXMouseActivated();
 	void setAutoZOrderActivation (bool enable);

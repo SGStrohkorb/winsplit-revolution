@@ -1,4 +1,3 @@
-// Fichier fonctions_resize.h
 #ifndef __FONCTIONSRESIZE__
 #define __FONCTIONSRESIZE__
 

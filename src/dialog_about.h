@@ -1,4 +1,3 @@
-// Fichier wxabout.h
 #ifndef __WXABOUT__
 #define __WXABOUT__
 

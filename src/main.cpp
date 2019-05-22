@@ -1,4 +1,3 @@
-// Fichier main_application.cpp
 #include <windows.h>
 #include <tlhelp32.h>
 
@@ -31,9 +30,8 @@ WinSplitApp::~WinSplitApp()
 bool WinSplitApp::OnInit()
 {
 	setlocale (LC_NUMERIC, "C");
-	// On spécifie "en dur" le nom de l'application
 	SetAppName (_T ("Winsplit Revolution") );
-	// On vérifie tout de suite si une autre instance ne tourne pas déjà
+	// Check if another instance is running
 	if (IsAlreadyRunning() )
 	{
 		wxMessageBox (_ ("Program already running!"), _ ("WinSplit message"), wxOK | wxICON_INFORMATION);
@@ -47,15 +45,14 @@ bool WinSplitApp::OnInit()
 		return false;
 	}
 
-	// Si les options le spécifient, on supprime les éventuels fichiers temporaires
-	// provenant de captures d'écran précédentes
+  // If the settings specify it, delete any temporary files from previous screen shots
 	if ( (options.getAutoDeleteTempFiles() ) && (options.getAutoDeleteTime() == 0) )
 		ActiveWndToolsDialog::DeleteTempFiles();
 
 	wxInitAllImageHandlers();
 	wxSocketBase::Initialize();
 
-	// Création de TrayIcon qui va gérer le lancement/management du programme
+	// Creation of TrayIcon that will manage the launch / management of the program
 	p_frameHook = new FrameHook();
 
 	p_frameHook->Show();
@@ -77,14 +74,13 @@ int WinSplitApp::OnExit()
 	delete p_frameHook;
 	delete p_tray;
 
-	// Si les options le spécifient, on supprime les éventuels fichiers temporaires
-	// provenant de captures d'écran précédentes
+  // If the settings specify it, delete any temporary files from previous screen shots
 	SettingsManager& options = SettingsManager::Get();
 	if ( (options.getAutoDeleteTempFiles() ) && (options.getAutoDeleteTime() == 1) )
 		ActiveWndToolsDialog::DeleteTempFiles();
-	// On pense à détruire l'instance du SettingsManager
+	// Destroy SettingsManager
 	SettingsManager::Kill();
-	// On détruit également l'instance du wxSingleInstanceChecker
+	// Destroy wxSingleInstanceChecker
 	delete p_checker;
 
   return wxApp::OnExit();

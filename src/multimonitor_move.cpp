@@ -2,7 +2,7 @@
 
 #include "multimonitor_move.h"
 #include "settingsmanager.h"
-#include "fonctions_speciales.h"
+#include "functions_special.h"
 
 #include <wx/msgdlg.h>
 
@@ -139,7 +139,7 @@ double DistanceCentreToMiddleEdge (DIRECTION sens, wxRect screen, wxRect window)
 	{
 		screen_edge_x = screen.GetLeft();
 	}
-	else //(sens == LEFT_SCREEN) Implémentation future de Up et bas
+	else //(sens == LEFT_SCREEN) Future implementation of Up and down
 	{
 		screen_edge_x = screen.GetRight();
 	}

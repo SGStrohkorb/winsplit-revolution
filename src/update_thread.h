@@ -13,7 +13,6 @@ private:
 	unsigned int m_timeout;
 
 public:
-	// Contructeur de la classe
 	ReadVersionThread (const unsigned int& timeout);
 	~ReadVersionThread();
 

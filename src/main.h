@@ -31,7 +31,7 @@ public:
 	virtual bool OnInit();
 	int OnExit();
 
-	wxString GetVersion(); // En attente de la vraie version
+	wxString GetVersion(); // waiting for the real version
 
 	TrayIcon* GetTrayInstance()
 	{

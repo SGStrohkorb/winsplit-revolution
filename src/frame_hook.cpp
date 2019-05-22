@@ -25,7 +25,7 @@ FrameHook::FrameHook (wxWindow* parent, wxWindowID id, const wxString& title, co
 	  m_wheelpos (0),
 	  m_wheelposPrevious (-1)
 {
-	// Pour etre sur que rien n'apparaisse
+	// To be sure that nothing appears
 	SetTransparent (0);
 
 	CreateControls();
@@ -38,7 +38,7 @@ FrameHook::~FrameHook()
 {
 	StopAllHook();
 
-	// On libere la DLL
+	// Release the DLL
 	HMODULE module_dll = GetModuleHandle (L"winsplithook.dll");
 	//GetModuleHandleEx(0,L"winsplithook.dll",&module_dll);
 	FreeLibrary (module_dll);

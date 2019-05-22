@@ -17,7 +17,7 @@ struct RatioRect
 };
 
 
-class LayoutManager // Classe singleton
+class LayoutManager // Singleton class
 {
 private:
 	static LayoutManager* p_instance;

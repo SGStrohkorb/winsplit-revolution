@@ -194,10 +194,6 @@ void ChooseRatioDialog::CheckValidity (wxCommandEvent& event)
 	}
 }
 
-//===============
-// LayoutDialog
-//===============
-
 LayoutDialog::LayoutDialog (wxWindow* parent, wxWindowID id, const wxString& title)
 	: wxDialog (parent, id, title),
 	  tab_seq_tmp(),

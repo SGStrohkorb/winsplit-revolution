@@ -136,9 +136,7 @@ void ChooseHotkeyDialog::SetVecHK (const vector<HotkeyStruct> &vec)
 	vec_hk = vec;
 }
 
-//===========================
 //  HOTKEY CONFIGURE FRAME
-//===========================
 HotkeyConfigureDialog::HotkeyConfigureDialog (HotkeysManager* p)
 	: p_listbox (NULL),
 	  p_btnEdit (NULL),

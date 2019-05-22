@@ -1,6 +1,6 @@
 #include "hotkeys_manager.h"
-#include "fonctions_resize.h"
-#include "fonctions_speciales.h"
+#include "functions_resize.h"
+#include "functions_special.h"
 #include "virtual_key_manager.h"
 #include "multimonitor_move.h"
 #include "dialog_activewndtools.h"

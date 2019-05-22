@@ -3,7 +3,7 @@
 
 #include "auto_placement.h"
 #include "dialog_fusion.h"
-#include "liste_windows.h"
+#include "list_windows.h"
 #include "minimize_restore.h"
 #include "settingsmanager.h"
 
@@ -37,17 +37,12 @@ void StoreOrSetMousePosition (bool storeOnly, HWND wnd)
 	SetCursorPos (newX, newY);
 }
 
-//==================
-// Mosaique
-//==================
 void Mosaique()
 {
 	PostMessage (FindWindow (_T ("Shell_TrayWnd"), NULL), WM_COMMAND, 405, 0);
 }
 
-//==================
-// Fermer toutes les fenetres
-//==================
+// Close all windows
 bool CALLBACK CloseEnumWindowsProc (HWND hwnd, LPARAM lParam)
 {
 	wxChar text[256];
@@ -65,9 +60,7 @@ void CloseAllFrame()
 	EnumWindows ( (WNDENUMPROC) CloseEnumWindowsProc, 0);
 }
 
-//==================
-// Placement automatique
-//==================
+// Automatic placement
 void AutoPlace()
 {
 	HWND m_hwnd = ListWindows::ListWindow();
@@ -116,9 +109,7 @@ void AutoPlace()
 	}
 }
 
-//==================
-// Fusion des fenetres
-//==================
+// Merge windows
 bool CALLBACK EnumWindowsMerge (HWND hwnd, LPARAM lParam)
 {
 	HWND* p_app_fusion = (HWND*) lParam;
@@ -164,9 +155,7 @@ void fusion_fenetres()
 	}
 }
 
-//==================
-// Minimise des fenetres
-//==================
+// Minimize windows
 void MinimizeRestore::MiniMizeWindow()
 {
 	WindowMinimized window;
@@ -230,7 +219,7 @@ void MinimizeRestore::MaximizeHorizontally()
 	MONITORINFO monitor_info;
 	RECT rcMonitor;
 
-	// On recupere les informations liees au monitor courant => Gestion du multi-moniteur
+	// Retrieve the information related to the current monitor => management of multi-monitor
 	hmonitor = MonitorFromWindow (hWnd, MONITOR_DEFAULTTONEAREST);
 	monitor_info.cbSize = sizeof (MONITORINFO);
 	GetMonitorInfo (hmonitor, &monitor_info);
@@ -249,7 +238,7 @@ void MinimizeRestore::MaximizeVertically()
 	MONITORINFO monitor_info;
 	RECT rcMonitor;
 
-	// On recupere les informations liees au monitor courant => Gestion du multi-moniteur
+  // Retrieve the information related to the current monitor => management of multi-monitor
 	hmonitor = MonitorFromWindow (hWnd, MONITOR_DEFAULTTONEAREST);
 	monitor_info.cbSize = sizeof (MONITORINFO);
 	GetMonitorInfo (hmonitor, &monitor_info);
@@ -313,16 +302,15 @@ void ShowAnimation (RECT& rcWnd, bool growing)
 
 void ToggleAlwaysOnTop()
 {
-	// Recuperation de la fenetre active
+	// Get the active window
 	HWND hWnd = GetForegroundWindow();
-	// On verifie qu'il s'agit d'une fenetre "correcte"
+	// Check that it is a "correct" window
 	if (!ListWindows::ValidateWindow (hWnd) ) return;
-	// On recupere l'etat actuel du stylke AlwaysOnTop
+	// Get the current state of the AlwaysOnTop style
 	long lStyle =::GetWindowLong (hWnd, GWL_EXSTYLE);
 	bool bState = ( (lStyle & WS_EX_TOPMOST) == WS_EX_TOPMOST);
-	// On applique le nouveau style
+	// Apply the new style
 	SetWindowPos (hWnd, (bState ? HWND_NOTOPMOST : HWND_TOPMOST), 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-	// On lance l'effet de la mort...
 	RECT rcWnd;
 	if (!GetWindowRect (hWnd, &rcWnd) ) return;
 	ShowAnimation (rcWnd, !bState);

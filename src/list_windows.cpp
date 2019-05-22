@@ -1,9 +1,6 @@
-#include "liste_windows.h"
+#include "list_windows.h"
 #include "settingsmanager.h"
 
-//====================
-// Listage fenetres
-//====================
 bool ListWindows::ValidateWindow (HWND hwnd, bool accept_tmw)
 {
 	wxChar buffer[256];
@@ -31,7 +28,6 @@ bool CALLBACK EnumWindowsProc (HWND hwnd, LPARAM lParam)
 	return true;
 }
 
-//======================
 HWND ListWindows::ListWindow()
 {
 	SettingsManager &options = SettingsManager::Get();

@@ -1,4 +1,3 @@
-// Fichier tray_icon.h
 #ifndef __TASKBARICON__
 #define __TASKBARICON__
 

@@ -3,10 +3,10 @@
 
 typedef enum DIRECTION
 {
-    GAUCHE,
-    DROITE,
-    HAUT,
-    BAS
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN
 };
 
 #endif // __DIRECTION_H__

@@ -6,7 +6,6 @@
 #include <wx/icon.h>
 #include <wx/slider.h>
 
-// Pour utiliser l'algo swap
 #include <algorithm>
 
 #include "dialog_fusion.h"
@@ -35,7 +34,7 @@ void FusionDialog::CreateControls()
 {
 	wxBoxSizer* pmainSizer;
 
-	//Button special pour la touche ESC
+	// Special button for the ESC key
 	new wxButton (this, wxID_CANCEL, wxEmptyString, wxDefaultPosition, wxSize (0, 0) );
 
 	pmainSizer = new wxBoxSizer (wxVERTICAL);
@@ -96,7 +95,7 @@ void FusionDialog::InitialisationFrame()
 	HMONITOR hmonitor;
 	MONITORINFO monitor_info;
 
-	// On recupere les informations liees au monitor courant => Gestion du multi-moniteur
+	// Get information related to the current monitor => Management of multi-monitor
 	hmonitor = MonitorFromWindow (AppToMerge[0], MONITOR_DEFAULTTONEAREST);
 	monitor_info.cbSize = sizeof (MONITORINFO);
 	GetMonitorInfo (hmonitor, &monitor_info);

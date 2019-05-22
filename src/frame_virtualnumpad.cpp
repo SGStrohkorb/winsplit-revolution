@@ -1,7 +1,7 @@
 #include <windows.h>
 
 #include "frame_virtualnumpad.h"
-#include "fonctions_resize.h"
+#include "functions_resize.h"
 #include "settingsmanager.h"
 
 #include "../images/a1.xpm"

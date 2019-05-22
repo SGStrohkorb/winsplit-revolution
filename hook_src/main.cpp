@@ -31,7 +31,7 @@ HINSTANCE m_hDllInstance = NULL;
 #ifndef LWA_ALPHA
 #define LWA_ALPHA		0x00000002
 #endif
-// Format de la fonction GetLayeredWindowAttributes
+// Format of the GetLayeredWindowAttributes function
 typedef BOOL (WINAPI *GLWA_FUNC) (HWND hwnd, COLORREF *crKey, BYTE *bAlpha, DWORD *dwFlags);
 GLWA_FUNC MyGetLayeredWindowAttributes = NULL;
 

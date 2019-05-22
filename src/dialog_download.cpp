@@ -301,7 +301,7 @@ void DownloadDialog::OnCancel (wxCommandEvent& event)
 
 void DownloadDialog::SetProgressValue (unsigned int val)
 {
-	// Pour eviter les problemes de scintillement
+	// To avoid flicker problems
 	unsigned int val_previous = p_gauge->GetValue();
 
 	if (val_previous != val)

@@ -6,8 +6,8 @@ enum DIRECTION
 {
 	LEFT_SCREEN,
 	RIGHT_SCREEN,
-	UP_SCREEN,       // A implementer dans le futur
-	DOWN_SCREEN      // idem
+	UP_SCREEN,       // To be implemented in the future
+	DOWN_SCREEN      // To be implemented in the future
 };
 
 extern void MoveWindowToDirection (HWND hwnd, DIRECTION sens);
