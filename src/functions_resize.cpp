@@ -1,8 +1,7 @@
 #include <Windows.h>
 
+#include <dwmapi.h>
 #include <psapi.h>
-// For Vista and newer "extended" border compensation:
-#include "Dwmapi-compat.h"
 
 #include "auto_placement.h"
 #include "dialog_fusion.h"
