@@ -13,8 +13,11 @@ lost.
 
 The main goal of this project is to get sizing and positioning working correctly
 for windows 10. The [invisible frame](https://github.com/Maximus5/ConEmu/issues/284#issuecomment-257339519)
- in windows 10 breaks sizing and positioning. A fix for this is already
- implemented.
+in windows 10 breaks sizing and positioning. A fix for this is already
+implemented.
+
+The secondary goal is to clean up, modernize and make the code base more
+accessible for contributions.
 
 ## Supported Systems
 
