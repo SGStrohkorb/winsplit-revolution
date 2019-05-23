@@ -22,8 +22,9 @@ ReadVersionThread::~ReadVersionThread() {}
 
 void* ReadVersionThread::Entry()
 {
-  if (!HaveToCheck())
-    return NULL;
+  if (!HaveToCheck()) {
+    return nullptr;
+  }
 
   wxHTTP http;
   char szBuff[1025];
@@ -60,6 +61,8 @@ void* ReadVersionThread::Entry()
       delete stream;
     }
   }
+
+  return nullptr;
 }
 
 void ReadVersionThread::ForceChecking()

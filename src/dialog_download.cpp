@@ -86,6 +86,8 @@ void* DownloadThread::Entry()
   }
 
   f_out.Close();
+
+  return nullptr;
 }
 
 DownloadDialog::DownloadDialog(const wxString& versionFileInfo)

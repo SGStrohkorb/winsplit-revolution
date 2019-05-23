@@ -170,9 +170,13 @@ std::vector<HotkeyStruct> HotkeysManager::GetCpyVector()
 int HotkeysManager::GetTaskIndex(wxString name)
 {
   for (unsigned int i = 0; i < vec_hotkey.size(); ++i) {
-    if (name == xml_str[i])
+    if (name == xml_str[i]) {
       return i;
+    }
   }
+
+  // better than undefined behaviour, fix this later
+  throw std::runtime_error("Invalid task");
 }
 
 bool HotkeysManager::LoadData()
