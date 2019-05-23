@@ -19,6 +19,19 @@ implemented.
 The secondary goal is to clean up, modernize and make the code base more
 accessible for contributions.
 
+## Building
+
+### Build wxWidgets
+
+- Open a developers x64 command prompt in the project folder
+- `cd wxWidgets\build\msw`
+- `nmake -f makefile.vc BUILD=release RUNTIME_LIBS=static TARGET_CPU=X64`
+
+### Build WinSplit Revolution
+
+- Open a developers x64 command prompt in the project folder
+- `msbuild "Winsplit Revolution.sln" -property:Configuration=Release -property:Platform=x64`
+
 ## Supported Systems
 
 This fork is only tested against windows 10 x64.
