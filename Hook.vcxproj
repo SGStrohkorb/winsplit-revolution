@@ -128,6 +128,9 @@
   <ItemGroup>
     <ResourceCompile Include="hook_src\ressource.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hook_src\resource.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
