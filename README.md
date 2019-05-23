@@ -4,6 +4,9 @@ WinSplit Revolution is a small utility which allows you to easily organize your
 open windows by tiling, resizing and positioning them to make the best use of
 your desktop real estate.
 
+[![Download Latest](https://img.shields.io/badge/download-latest-green.svg)](https://github.com/dozius/winsplit-revolution/releases/latest)
+[![Github All Releases](https://img.shields.io/github/downloads/dozius/winsplit-revolution/total.svg)](https://github.com/dozius/winsplit-revolution/releases)
+
 ## History
 
 This project recovers the code for v9.02 of WinSplit Revolution from the
