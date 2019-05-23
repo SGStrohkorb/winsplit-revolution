@@ -111,7 +111,7 @@ wxString WinSplitApp::GetVersion()
   GetFileVersionInfo(sfname, 0, dwSize + 4, szVerInf);
   wxChar* szValue;
   UINT uiSize;
-  VerQueryValue(szVerInf, L"\\StringFileInfo\\040c04b0\\FileVersion", (void**)&szValue, &uiSize);
+  VerQueryValue(szVerInf, L"\\StringFileInfo\\000904b0\\FileVersion", (void**)&szValue, &uiSize);
   sResult = wxString(szValue);
   delete szVerInf;
   return sResult;
