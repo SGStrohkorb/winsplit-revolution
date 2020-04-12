@@ -568,10 +568,11 @@ void SettingsManager::Initialize()
   m_iLanguage = wxLANGUAGE_DEFAULT;
   // The path where the language files are located
   wxLocale::AddCatalogLookupPathPrefix(m_sAppPath + _T ("languages"));
+
   // Initialize the variable wxLocale with the default language of the system
-  if (!m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING))
-    wxMessageBox(_T ("Unable to set default language !"), _("Error"), wxICON_ERROR);
-  ;
+  // Defaults to English if the language is not supported by wxWidgets so just ignore errors
+  m_locale.Init(wxLANGUAGE_DEFAULT);
+
   m_locale.AddCatalog(_T ("winsplit"));
   // Check if the system language corresponds to a language supported by Winsplit
   int iCount = GetAvailableLanguagesCount();
